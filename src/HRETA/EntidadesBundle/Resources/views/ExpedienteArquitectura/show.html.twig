@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+{% block body -%}
+
+    <div class="panel span6 offset1">
+        <div class="panel-header">
+            <h3>Expediente de Arquitectura</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="span8 offset1">
+                <table class="record_actions">
+                    <tbody>
+
+                        <tr>
+                            <th>Versión</th>
+                            <td>{{ entity.version }}</td>
+                        </tr>
+                        <tr>
+                            <th>Datos del expediente</th>
+                            <td>{{ entity.datosDelExpediente }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <ul class="record_actions">
+
+            <i class="icon-arrow-left"></i>   <a href="{{ path('expedientearquitectura') }}">
+                Volver
+            </a>
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <i class="icon-edit"></i> <a href="{{ path('expedientearquitectura_edit', { 'id': entity.id }) }}">
+                    Editar
+                </a>
+            {% endif %}
+
+        </ul>
+
+
+    </div>
+
+{% endblock %}

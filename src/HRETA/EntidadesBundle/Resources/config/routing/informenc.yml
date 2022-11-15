@@ -1,0 +1,30 @@
+informenc:
+    pattern:  /
+    defaults: { _controller: "EntidadesBundle:InformeNc:index" }
+
+informenc_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EntidadesBundle:InformeNc:show" }
+
+informenc_new:
+    pattern:  /new
+    defaults: { _controller: "EntidadesBundle:InformeNc:new" }
+
+informenc_create:
+    pattern:  /create
+    defaults: { _controller: "EntidadesBundle:InformeNc:create" }
+    requirements: { _method: post }
+
+informenc_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EntidadesBundle:InformeNc:edit" }
+
+informenc_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EntidadesBundle:InformeNc:update" }
+    requirements: { _method: post|put }
+
+informenc_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EntidadesBundle:InformeNc:delete" }
+    requirements: { _method: post|delete }

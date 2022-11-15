@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+{% form_theme form '::theme.html.twig'%}
+
+{%block body-%}
+    <div class="panel span6 offset1">
+        <div class="panel-header">
+
+            <h3>Registro de  Documento</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="span6 offset3">
+                {{ form_start(form) }}
+
+                {{ form_label(form.version) }}
+                {{ form_widget(form.version, {'attr':{'class':'span12 ' }}) }}
+
+                {{ form_widget(form.aplicaAlProyecto, {'attr':{'class': 'aplica' }}) }}
+                {{ form_label(form.aplicaAlProyecto) }}
+
+
+                {{ form_label(form.causaNoAplicar) }}
+                {{ form_widget(form.causaNoAplicar, {'attr':{'class': 'span12' }}) }}
+
+                {#{ form_label(form.idexped) }}
+                {{ form_widget(form.idexped, {'attr':{'class': 'span12 ' }}) }#}      
+                {{ form_label(form.tblTipoDocid) }}
+                {{ form_widget(form.tblTipoDocid, {'attr':{'class': 'span12 ' }}) }} 
+                {{ form_widget(form) }}  
+                <br>
+                <div class="pull-right">
+                    <button type="submit" class="btn"  />Aceptar</button>
+                    <a class="btn" href="{{ path('documentoarquitectura',{'idexped':idexped },{'reject':true})}}">
+                        Cancelar
+                    </a>
+
+                </div>
+                <br>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

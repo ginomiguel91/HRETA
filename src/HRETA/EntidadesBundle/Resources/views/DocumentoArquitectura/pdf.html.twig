@@ -1,0 +1,139 @@
+
+<div  id="container" style="padding-top: 100px">
+    <img src="E:\AppServ\htdocs\T\web\bundles\entidades\images\uci1.jpg" style="margin-top: 100px; height: 213px; width: 317px">
+    <div class="row">
+
+        <div  style="margin-left: 50%">
+
+            <h2 style="color: #000000">DIRECCIÓN DE GESTIÓN DE PROYECTOS</h2>   
+        </div>
+        <div   style="margin-left: 50%">
+            <h1 style="color: #003bb3">Dictamen sobre el estado de 
+                elaboración del Artefacto:
+                Diseño de la Arquitectura de 
+                Software.</h1>   
+
+        </div>
+
+        <div  style="margin-left:50%">
+            <h1 style="color: #003bb3">Proyecto: {{expediente.idproy}}</h1>
+        </div>
+        <div  style="margin-left:50%">
+            <h2 style="color: #003bb3">{{expediente.idproy.descripcion}}</h2>
+        </div>
+    </div>
+
+
+
+    <div style="height:  400px;"></div>
+
+    <div style="text-align: center; margin-bottom: 100px" >
+        <h4> Universidad de las Ciencias Informáticas
+            Carretera a San Antonio Km 2 1/2 . Torrens. Boyeros. Ciudad de La Habana. Cuba
+            Teléfono: + 53 (7) 837 2402 Fax: + 53 (7) 837 2407 E-mail: ip@uci.cu</h4>
+    </div>
+
+    <div style=" margin-bottom: 50px" >
+        <h1>Leyenda</h1>
+        <div><img src="E:\AppServ\htdocs\T\web\bundles\entidades\images\NS.png"> <b>Aprobada</b></div>
+        <br>
+        <div> <img src="E:\AppServ\htdocs\T\web\bundles\entidades\images\S.png" > <b>Aprobada con riesgos que deben ser monitorizados por la gerencia del proyecto.</b></div>
+        <br>
+        <div> <img src="E:\AppServ\htdocs\T\web\bundles\entidades\images\NS.png" ><b> Rechazada debe ser modificada y presentada en otra iteración.</b></div>
+    </div>
+
+    <div style=" margin-bottom: 50px" >
+        <h1>Objetivo</h1>
+        <div><b>Dictaminar el nivel de análisis arquitectónico basándose en la documentación de las  principales decisiones 
+                arquitectónicas y su argumentación sustentada en las restricciones, características del producto, así como la 
+                identificación  y  evaluación  adecuada  de  las  metas  de  arquitectónicas  basadas  en  requisitos  y  escenarios 
+                arquitectónicamente significativos.</b></div>
+    </div>
+    <div style=" margin-bottom: 50px" >
+        <h1>Alcance</h1>
+        <div><b>Aplicable a productos desarrollados o diseños de por desarrollar, extendible además  a línea de productos, 
+                ecosistemas de digitales o de software, arquitecturas de referencia de centros de desarrollo o cualquier otro 
+                nivel organizacional. </b></div>
+    </div>
+
+
+
+    {% for doc in docs%}
+        <div style="overflow-y: auto">
+            <div style="text-align: center; margin-bottom: 0px" >
+                <h2>{{doc.tblTipoDocid}}</h2>
+            </div>
+            <table >
+                <thead >
+                    <tr>
+                        <th style="text-align: center; width: 10%;">Satisfecho </th>
+                        <th style="text-align: center; width: 45%;">Aspecto a evaluar</th> 
+                        <th style="text-align: center; width: 45%;">Observaciones</th> 
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if doc.evaluacion  is not empty%}                
+                        {% for eval in doc.evaluacion%}
+                            <tr>
+                                {% if (eval.satisfecho)%}                          
+                                    <td style="text-align: center !important;">  <img src="E:\AppServ\htdocs\T\web\bundles\entidades\images\S.png" ></td>
+                                    {% else%}
+                                    <td style="text-align: center !important;"><img src="E:\AppServ\htdocs\T\web\bundles\entidades\images\NS.png"></td>
+                                    {% endif%}
+                                <td>{{eval.tblAspectosid}}</td>
+                                <td>{{eval.observaciones}}</td>
+                            </tr>
+                        {% endfor%}
+                    {% else%}
+                        {% for aspecto in doc.tblTipoDocid.aspectos%}
+                            <tr>
+                                <td style="text-align: center !important;"><img src="E:\AppServ\htdocs\T\web\bundles\entidades\images\NS.png"></td>
+                                <td>{{aspecto}}</td>
+                                <td></td>
+                            </tr>
+                        {% endfor%}
+                    {% endif%}
+
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
+
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        } 
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        table {
+            width: 100%;
+        }
+
+
+
+        td {           
+            vertical-align: central;
+            text-align: justify;
+            padding: 5px;
+
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #BEDCF0;
+            color: black;
+        }
+    </style>
+</div>

@@ -1,0 +1,125 @@
+<?php
+
+namespace HRETA\EntidadesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TblTipoDoc
+ *
+ * @ORM\Table(name="tbl_tipo_doc")
+ * @ORM\Entity
+ */
+class TipoDoc {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\SequenceGenerator(sequenceName="tbl_tipo_doc_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="denominador", type="string", nullable=true)
+     */
+    private $denominador;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var \Proyecto
+     *
+     * @ORM\OneToMany(targetEntity="Aspectos", mappedBy="tblTipoDocid", cascade={"remove"})
+     */
+    private $aspectos;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Set denominador
+     *
+     * @param integer $denominador
+     * @return TipoDoc
+     */
+    public function setDenominador($denominador) {
+        $this->denominador = $denominador;
+
+        return $this;
+    }
+
+    /**
+     * Get denominador
+     *
+     * @return integer 
+     */
+    public function getDenominador() {
+        return $this->denominador;
+    }
+
+    public function __toString() {
+        return $this->denominador;
+    }
+
+    public function getDescripcion() {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion($descripcion) {
+        $this->descripcion = $descripcion;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->aspectos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add aspectos
+     *
+     * @param \HRETA\EntidadesBundle\Entity\Aspectos $aspectos
+     * @return TipoDoc
+     */
+    public function addAspecto(\HRETA\EntidadesBundle\Entity\Aspectos $aspectos) {
+        $this->aspectos[] = $aspectos;
+
+        return $this;
+    }
+
+    /**
+     * Remove aspectos
+     *
+     * @param \HRETA\EntidadesBundle\Entity\Aspectos $aspectos
+     */
+    public function removeAspecto(\HRETA\EntidadesBundle\Entity\Aspectos $aspectos) {
+        $this->aspectos->removeElement($aspectos);
+    }
+
+    /**
+     * Get aspectos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAspectos() {
+        return $this->aspectos;
+    }
+
+}

@@ -1,0 +1,43 @@
+evalDocument:
+    pattern:  /{id}/eval
+    defaults: { _controller: "EntidadesBundle:DocumentoArquitectura:evalDocument" }
+    
+evalDocumentSave:
+    pattern:  /{id}/save
+    defaults: { _controller: "EntidadesBundle:DocumentoArquitectura:evalDocumentSave" }
+    
+documentoarquitectura:
+    pattern:  /
+    defaults: { _controller: "EntidadesBundle:DocumentoArquitectura:index" }
+
+documentoarquitectura_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EntidadesBundle:DocumentoArquitectura:show" }
+
+documentoarquitectura_new:
+    pattern:  /new
+    defaults: { _controller: "EntidadesBundle:DocumentoArquitectura:new" }
+
+documentoarquitectura_create:
+    pattern:  /create
+    defaults: { _controller: "EntidadesBundle:DocumentoArquitectura:create" }
+    requirements: { _method: post }
+
+documentoarquitectura_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EntidadesBundle:DocumentoArquitectura:edit" }
+
+documentoarquitectura_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EntidadesBundle:DocumentoArquitectura:update" }
+    requirements: { _method: post|put }
+
+#documentoarquitectura_delete:
+#    pattern:  /{id}/delete
+#    defaults: { _controller: "EntidadesBundle:DocumentoArquitectura:delete" }
+#    requirements: { _method: post|delete }
+    
+documentoarquitectura_evaluar:
+    pattern:  /{id}/evaluar
+    defaults: { _controller: "EntidadesBundle:DocumentoArquitectura:evaluacion" }
+    

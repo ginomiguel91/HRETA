@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html><head>
+        <title>{% block title %}HRETA | REVISOR{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        {% block stylesheets %}
+            <link href="{{asset('bundles/entidades/css/bootstrap.css')}}"rel="stylesheet">
+            <link href="{{asset('bundles/entidades/css/bootstrap-responsive.css')}}" rel="stylesheet">
+            <link href="{{asset('bundles/entidades/css/datatables.css')}}" rel="stylesheet">
+            <link href="{{asset('bundles/entidades/css/theme.ui.css')}}" rel="stylesheet">
+            <link href="{{asset('bundles/entidades/css/theme.css')}}" rel="stylesheet">   
+            <style>
+                textarea{
+                    resize: none;
+                    height: 90%;    
+                }
+
+                .header {
+                    border-bottom: 1px solid #0162B1;
+                    height: 60px;
+                    background: white;
+                }
+
+                .logo_grafica {
+                    height: 60px;
+                    display: inline;
+                }
+
+                .logo {
+                    height: 60px;
+
+                    background: #ffffff; /* Old browsers */
+
+                    background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%); /* FF3.6+ */
+                    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(32%, #ffffff), color-stop(100%, #dedede)); /* Chrome,Safari4+ */
+                    background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%); /* Chrome10+,Safari5.1+ */
+                    background: -o-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%); /* Opera 11.10+ */
+                    background: -ms-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%); /* IE10+ */
+                    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 32%, #dedede 100%); /* W3C */
+                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dedede', GradientType=0); /* IE6-9 */
+
+                    float: left;
+                }
+
+                .img_logo {
+                    margin: 8px 0 8px 1em;
+                }
+
+                .img_mini {
+                    display: inline-block;
+                    margin: 4px 5px 0 12px;
+                    opacity: .5;
+
+                }
+
+                .footer_text {
+                    opacity: .6;
+                }
+
+                .grafica {
+                    height: 60px;
+                    float: left;
+                    width: 256px;
+                }
+
+                .usuario {
+                    background: #D2D2D2;
+                    height: 60px;
+                    float: right;
+                    padding: 0 12px 0 0;
+                }
+
+                .content_avatar {
+                    padding: 3px;
+                    height: 46px;
+                    width: 46px;
+                    background: #FFFFFF;
+                    margin: 4px 6px;
+                    border-radius: 4px;
+                    float: left;
+                }
+
+                .avatar {
+                    height: 46px;
+                    width: 46px;
+                    overflow: hidden;
+                }
+
+                .user-opt {
+
+                    display: inline-block;
+
+                }
+
+                .other-opt {
+                    background: none repeat scroll 0 0 white;
+                    float: left;
+                    height: 60px;
+                    padding: 0 12px 0 0;
+
+                }
+
+                #wrap {
+                    height: auto !important;
+                    margin: 0 auto -60px;
+                    min-height: 100%;
+                }
+
+                #help-opt, #user-opt {
+                    margin-top: 12px;
+                }
+
+                .container-fluid {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+
+                html, body {
+                    height: 100%;
+                }
+
+                body {
+                    font-size: 75%;
+                    font-family: "Arial";
+                    background-color: #EBEBEB;
+
+                }
+
+                *:focus {
+                    outline: 0 !important;
+                }
+
+                #footer {
+                    bottom: 0;
+                    display: block;
+                    height: 35px;
+                    left: 0;
+                    margin: 0;
+                    right: 0;
+                    width: auto;
+                    background: none repeat scroll 0 0 #0162B1;
+                    overflow: hidden;
+                }
+
+                div#action_menu {
+                    background: none repeat scroll 0 0 #EBEBEB;
+                    border-bottom: 1px solid #0162B1;
+                    box-shadow: 0 2px 3px #D2D2D2;
+                    position: absolute;
+                    top: 61px;
+                    width: 100%;
+                    height: 35px;
+                }
+
+                div#action_menu > ul {
+                    margin-top: 1px;
+                }
+
+                #footer p {
+                    color: #FFFFFF;
+                    margin-top: 10px;
+                }
+
+                .form-horizontal .control-label {
+                    width: auto;
+                }
+
+                .form-horizontal .controls {
+                    margin-left: 80px;
+                }
+
+                .align-fix {
+                    margin-left: -15px;
+                    margin-top: 1px;
+                    padding-right: 15px
+                }
+
+                .margin-correct {
+                    margin-right: 13px;
+                }
+
+            </style>
+        {% endblock%}
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/entidades/images/favicon.png') }}" />
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="container-fluid" style="margin-bottom: 35px; position: relative;z-index: 2;">
+                <div class="header">
+                    <div class="logo_grafica">
+                        <div class="logo"><img class="img_logo" src="{{asset('bundles/entidades/images/logo.png')}}" alt=""></div>
+                        <div class="grafica"><img class="grafica" src="{{asset('bundles/entidades/images/grafica.jpg')}}" alt=""></div>
+                    </div>
+
+                    <div class="usuario" align="left">
+                        <div class="other-opt">
+
+                            <ul id="help-opt" class="nav nav-pills">
+                                <li class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Ayuda <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ asset('doc/HRETA.pdf') }}">Manual</a></li>
+                                        <li><a href="{{path('acercade')}}">Acerca de...</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+
+                        </div>
+                        <div class="content_avatar">
+                            <div class="avatar"><img src="{{asset('bundles/entidades/images/avatar_defauld.png')}}" alt=""></div>
+
+                        </div>
+                        <div class="user-opt">
+                            <ul id="user-opt" class="nav nav-pills">
+                                <li class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><b style="color: #0162B1;">Usuario:</b> {{app.user}}<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+
+                                        <li><a href="{{path('usuario_show',{'id':app.user.id})}}"><i class="icon-user"></i>Perfil</a></li>
+                                        <li><a href="{{path('logout')}}"><i class="icon-off" ></i>Desconectarse</a></li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="action_menu">
+
+                    <ul class="nav nav-pills" style="display: inline-block">
+
+                        <li>
+                            <a href="{{path('entidades_homepage')}}">Portada</a>
+                        </li>
+
+                        <li class="divider-vertical"></li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                            <li class="dropdown">
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administración<b class="caret"></b></a>
+
+                                <ul class="dropdown-menu">
+
+
+                                    <li><a href="{{path('expedientearquitectura_new')}}">Registrar expediente</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">Usuarios</a>
+                                        <ul class="dropdown-menu">
+                                            <li> <a href="{{path('usuario_new')}}">Registrar usuario</a></li>
+                                            <li> <a href="{{path('usuario')}}">Ver usuarios</a></li>
+                                        </ul>
+                                    </li>
+                                    <li> <a href="{{path('proyecto_new')}}">Registrar   proyecto </a></li>
+
+                                    <li><a href="{{path('rtfarquitectura_new')}}" >Registrar RTF </a></li>
+
+
+
+
+
+                                </ul>
+                            </li>
+                        {% endif%}
+                        <li class="divider-vertical"></li>
+
+
+
+
+
+                    </ul>
+
+
+                </div>
+            </div>
+
+
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span3" style="position: relative;z-index: 1;">
+                        <div class="well sidebar-nav" style="height: auto; min-height: 800px; margin-bottom: 0;background: #F4F4F4; border:0; border-right: 1px solid #ADADAD; border-radius: 0">
+
+                            <br><br>    
+
+                            <div id="accordion2" class="accordion">
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a href="#collapse1" data-parent="#accordion" data-toggle="collapse"
+                                           class="accordion-toggle collapsed">
+                                            <i class="icon-arrow-down"></i> Revisiones e incidencias
+                                        </a>
+                                    </div>
+                                    <div class="accordion-body collapse in" id="collapse1">
+                                        <div class="accordion-inner">
+                                            <i class="icon-tag"></i> <a href="{{path('rtfarquitectura')}}" >Revisiones Técnicas Formales  </a>
+                                            <br>
+                                            <i class="icon-tag"> </i> <a href="{{path('informenc_new')}}">Informe de incidencias</a>
+                                            <br>
+                                            <i class="icon-tag"> </i> <a href="{{path('noconformidad')}}">Ver incidencias</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a href="#collapse2" data-parent="#accordion" data-toggle="collapse"
+                                           class="accordion-toggle collapsed">
+                                            <i class="icon-arrow-down"></i>Proyectos  y expedientes  
+                                        </a>
+                                    </div>
+                                    <div class="accordion-body collapse in" id="collapse2">
+                                        <div class="accordion-inner">
+                                            <i class="icon-tag"></i> <a href="{{path('expedientearquitectura')}}"> Ver expedientes</a>
+                                            <br>  
+                                            <i class="icon-tag"></i> <a href="{{path('proyecto')}}"> Ver  proyectos </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a href="#collapse3" data-parent="#accordion" data-toggle="collapse"
+                                           class="accordion-toggle collapsed">
+                                            <i class="icon-arrow-down"></i>Evaluación arquitectónica
+                                        </a>
+                                    </div>
+                                    <div class="accordion-body collapse in" id="collapse3" >
+                                        <div class="accordion-inner">
+                                            <i class="icon-tag"></i> <a href="{{path('aspectos')}}"> Ver aspectos a evaluar </a>
+                                            <br>  
+                                            <i class="icon-tag"></i> <a href="{{path('aspectos_new')}}"> Registrar aspecto a evaluar </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a href="#collapse4" data-parent="#accordion" data-toggle="collapse"
+                                           class="accordion-toggle collapsed">
+                                            <i class="icon-arrow-down"></i>Reportes generales
+                                        </a>
+                                    </div>
+                                    <div class="accordion-body collapse in" id="collapse4">
+                                        <div class="accordion-inner">
+                                            <i class="icon-tag"></i> <a href="{{path('grafica_tipo_proyectos')}}">Proyectos por tipos</a>
+                                            <br>
+                                            <i class="icon-tag"></i> <a href="{{path('grafica_vista_aspectos')}}">Aspectos por vista</a>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br><br>
+
+
+                            <br><br>
+
+
+
+
+
+                        </div>
+
+                    </div>  
+                    <!--/span-->
+                    <br>
+                    <div class="span9">
+                        {% block flashMessage %}
+                            {% for flashMessage in app.session.flashbag.get('notice') %}
+                                <div class="alert alert-success">
+                                    <i class="icon-warning-sign"></i><button class="close" data-dismiss="alert" type="button">×</button>
+                                        {{ flashMessage |trans }}
+                                </div>
+                            {% endfor %}
+                            {% for flashMessage in app.session.flashbag.get('error') %}
+                                <div class="alert alert-error">
+                                    <i class="icon-warning-sign"></i><button class="close" data-dismiss="alert" type="button">×</button>
+                                        {{ flashMessage  | trans}}
+                                </div>
+                            {% endfor %}
+
+                        {% endblock %}
+                    </div>
+                {% block body %}{% endblock %}
+                <!--/span-->
+            </div>
+
+            <div id="footer">
+
+                <img alt=""src="{{asset('bundles/entidades/images/mini.png')}}" class="img_mini">
+
+                <p style="display: inline-block;margin-left: 5px;vertical-align: top;" class="footer_text" align="left">
+                    Universidad de las Ciencias Informáticas. HRETA.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script src="{{asset('bundles/entidades/js/jquery-1.9.1.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/jquery-ui.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/bootstrap.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/bootstrap-slider.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/jquery.dataTables.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/jquery.ui.combobox.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/jquery.ui.menubar.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/jquery.ui.datepicker.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/jquery.ui.core.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/jquery.ui.widget.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/tab.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/acord.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/toolbar.js')}}"type="text/javascript"></script>
+    <script src="{{asset('bundles/entidades/js/datepicker.js')}}"type="text/javascript"></script>
+    <script type="text/javascript">
+        $("#hreta_entidadesbundle_rtfarquitectura_fechai").datepicker();
+        $("#hreta_entidadesbundle_rtfarquitectura_fechaf").datepicker();
+        $("#hreta_entidadesbundle_noconformidad_fecha").datepicker();
+        $("#hreta_entidadesbundle_noconformidad_fechaSolucion").datepicker();
+    </script>
+    <script type="text/javascript">
+
+        $(function() {
+            $('.aplica').on('change', function() {
+                if (this.checked) {
+                    $('.causa').hide();
+                    $('.isRequired').removeAttr('required');
+
+                } else {
+                    $('.causa').show();
+                    $('.isRequired').attr('required', '');
+
+                }
+
+            });
+            $('.aplica').change();
+        });
+
+
+
+
+    </script>
+    <script>
+
+        $("h3").tooltip({
+            position: {
+                at: "right+10 top-20"
+            }
+        });
+    </script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

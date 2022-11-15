@@ -1,0 +1,30 @@
+proyecto:
+    pattern:  /
+    defaults: { _controller: "EntidadesBundle:Proyecto:index" }
+
+proyecto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EntidadesBundle:Proyecto:show" }
+
+proyecto_new:
+    pattern:  /new
+    defaults: { _controller: "EntidadesBundle:Proyecto:new" }
+
+proyecto_create:
+    pattern:  /create
+    defaults: { _controller: "EntidadesBundle:Proyecto:create" }
+    requirements: { _method: post }
+
+proyecto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EntidadesBundle:Proyecto:edit" }
+
+proyecto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EntidadesBundle:Proyecto:update" }
+    requirements: { _method: post|put }
+
+proyecto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EntidadesBundle:Proyecto:delete" }
+    requirements: { _method: post|delete }

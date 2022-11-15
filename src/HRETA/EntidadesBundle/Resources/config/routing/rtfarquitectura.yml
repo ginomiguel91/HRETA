@@ -1,0 +1,30 @@
+rtfarquitectura:
+    pattern:  /
+    defaults: { _controller: "EntidadesBundle:RtfArquitectura:index" }
+
+rtfarquitectura_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EntidadesBundle:RtfArquitectura:show" }
+
+rtfarquitectura_new:
+    pattern:  /new
+    defaults: { _controller: "EntidadesBundle:RtfArquitectura:new" }
+
+rtfarquitectura_create:
+    pattern:  /create
+    defaults: { _controller: "EntidadesBundle:RtfArquitectura:create" }
+    requirements: { _method: post }
+
+rtfarquitectura_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EntidadesBundle:RtfArquitectura:edit" }
+
+rtfarquitectura_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EntidadesBundle:RtfArquitectura:update" }
+    requirements: { _method: post|put }
+
+rtfarquitectura_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EntidadesBundle:RtfArquitectura:delete" }
+    requirements: { _method: post|delete }

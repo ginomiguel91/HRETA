@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+     
+    <div class="panel span6 offset1">
+    <div class="panel-header">
+    <h3>Incidencia</h3>
+</div>
+             <div class="panel-body">
+      
+       <div class="span8 offset1">
+           <table class="records_list">
+        <tbody>
+           
+            <tr>
+                <th>Tipo</th>
+                <td>{{ entity.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Asunto</th>
+                <td>{{ entity.asunto }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ entity.fecha|date('Y-m-d') }}</td>
+                
+            </tr>
+            <tr>
+                <th>Fecha de Solucion</th>
+                <td>{{ entity.fechaSolucion|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ entity.descripcion }}</td>
+            </tr>
+        </tbody>
+    </table>
+            </div>
+            </div>
+
+        <ul class="record_actions">
+   
+       <i class="icon icon-arrow-left"></i><a href="{{ path('noconformidad') }}">
+      Volver
+        </a>
+    
+   
+           <i class="icon icon-edit"></i><a href="{{ path('noconformidad_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+   
+ 
+</ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,74 @@
+
+{% trans_default_domain 'FOSUserBundle' %}
+<title>{% block title %}HRETA | AUTENTICAR{% endblock %}</title>
+<link rel="icon" type="image/x-icon" href="{{ asset('bundles/entidades/images/favicon.png') }}" />
+<link href="{{asset('bundles/entidades/css/theme.css')}}" rel="stylesheet">
+<link href="{{asset('bundles/entidades/css/login.css')}}" rel="stylesheet">
+
+{% block fos_user_content %}
+    <div id="wrapper" style="padding-bottom: 30px">
+        <div id="login_box">
+            <div id="login_top">
+
+                <div id="logo"></div>
+            </div>
+            <div id="login_bottom">
+
+                <div id="grafica_login">
+
+                    <div class="logo"><img class="img_logo" src="{{asset('bundles/entidades/images/logo-login2.png')}}" alt=""></div>  
+
+                </div>
+                <form action="{{ path("login_check") }}" method="post" class="form-horizontal" role="form" >
+                    <input type="hidden" name="_csrf_token" value="{{fos_csrf_provider.generateCsrfToken('authenticate')}}" />
+
+
+                    {% if error %}
+                        <div class="form-group">
+                            <div class="col-md-7"> 
+                                {{ error | trans}} 
+                            </div>        
+                        </div> 
+                    {% endif %}
+                    <div class="form-group">
+                        <div class="col-md-7"> 
+                            <input type="text" id="username" placeholder="usuario" name="_username" class="form-control" value="{{ last_username }}" required="required" />
+                        </div>        
+                    </div> 
+
+                    <div class="form-group">        
+                        <div class="col-md-7">            
+                            <input type="password" id="password" placeholder="contraseña" name="_password" class="form-control" required="required" />
+                        </div>        
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-7">
+                            <div class="checkbox">
+                                <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+                                <label for="remember_me">Recordar contraseña</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-7">
+                            <div class="buttons-align-rhoda">
+                                <button type="submit" id="_submit "  class="btn btn-default" name="_submit" >Entrar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div><a  href="{{path('fos_user_registration_register')}}">Registrarme en HRETA </a></div> 
+
+                </form>
+
+
+            </div>
+        </div>
+
+
+    </div>
+{% endblock fos_user_content %}

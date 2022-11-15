@@ -1,0 +1,100 @@
+<?php
+
+namespace HRETA\EntidadesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TblVistaDictamen
+ *
+ * @ORM\Table(name="tbl_vista_dictamen")
+ * @ORM\Entity
+ */
+class VistaDictamen
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="tbl_vista_dictamen_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \VistaArquitectura
+     *
+     * @ORM\ManyToOne(targetEntity="VistaArquitectura")
+    
+     */
+    private $idvista;
+
+    /**
+     * @var \DictamenRtf
+     *
+     * @ORM\ManyToOne(targetEntity="DictamenRtf")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="iddictamen", referencedColumnName="iddictamen")
+     * })
+     */
+    private $iddictamen;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set idvista
+     *
+     * @param \HRETA\EntidadesBundle\Entity\VistaArquitectura $idvista
+     * @return VistaDictamen
+     */
+    public function setIdvista(\HRETA\EntidadesBundle\Entity\VistaArquitectura $idvista = null)
+    {
+        $this->idvista = $idvista;
+    
+        return $this;
+    }
+
+    /**
+     * Get idvista
+     *
+     * @return \HRETA\EntidadesBundle\Entity\VistaArquitectura 
+     */
+    public function getIdvista()
+    {
+        return $this->idvista;
+    }
+
+    /**
+     * Set iddictamen
+     *
+     * @param \HRETA\EntidadesBundle\Entity\DictamenRtf $iddictamen
+     * @return VistaDictamen
+     */
+    public function setIddictamen(\HRETA\EntidadesBundle\Entity\DictamenRtf $iddictamen = null)
+    {
+        $this->iddictamen = $iddictamen;
+    
+        return $this;
+    }
+
+    /**
+     * Get iddictamen
+     *
+     * @return \HRETA\EntidadesBundle\Entity\DictamenRtf 
+     */
+    public function getIddictamen()
+    {
+        return $this->iddictamen;
+    }
+}

@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="panel span6 offset1">
+        <div class="panel-header">
+            <h3>Rtf a la Arquitectura</h3>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="span8 offset1">
+                <table class="record_list">
+                    <tbody>
+
+                        <tr>
+                            <th>Numero</th>
+                            <td>{{ entity.numero }}</td>
+                        </tr>
+                        <tr>
+                            <th>Version</th>
+                            <td>{{ entity.version }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fechai</th>
+                            <td>{{ entity.fechai|date('Y-m-d') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fechaf</th>
+                            <td>{{ entity.fechaf|date('Y-m-d') }}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <ul class="record_actions">
+
+            <i class="icon icon-arrow-left"></i>  <a class="btn-link"href="{{ path('rtfarquitectura') }}">
+                Volver
+            </a>
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <i class="icon icon-edit"></i>  <a class="btn-link" href="{{ path('rtfarquitectura_edit', { 'id': entity.id }) }}">
+                    Editar
+                </a>
+            {%endif %}
+
+        </ul>
+        <div class="span12">
+            <img src="{{asset('bundles/entidades/images/plan.jpg')}}">
+        </div>
+    </div>
+{% endblock %}

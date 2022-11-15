@@ -1,0 +1,30 @@
+entidades_homepage:
+    pattern:  /
+    defaults: { _controller: EntidadesBundle:Default:index }
+pdf:
+    pattern:  /pdf/{id}
+    defaults: { _controller: EntidadesBundle:Default:pdf }  
+    
+grafica_tipo_proyectos:
+    pattern:  /grafica-tipo-proyecto
+    defaults: { _controller: EntidadesBundle:Default:graficaTipoProyecto }  
+grafica_vista_aspectos:
+    pattern:  /grafica-vista-aspectos
+    defaults: { _controller: EntidadesBundle:Default:graficaVistaAspectos }  
+    
+acercade:
+  pattern:  /acercade
+  defaults: { _controller: EntidadesBundle:Default:acercade }  
+    
+login_check:
+    pattern: /login_check
+
+logout:
+    pattern: /logout
+
+        
+
+
+  
+      
+   

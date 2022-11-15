@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="panel span6 offset1">
+        <div class="panel-header">
+            <h3>Proyecto</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="span8 offset1">
+                <table class="record_actions">
+                    <tbody>
+
+                        <tr>
+                            <th>Nombre</th>
+                            <td>{{ entity.nombre }}</td>
+                        </tr>
+                        <tr>
+                            <th>Versión</th>
+                            <td>{{ entity.version }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descripción</th>
+                            <td>{{ entity.descripcion }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <ul class="record_actions">
+
+
+            <i class="icon-arrow-left"></i><a href="{{ path('proyecto') }}">
+                Volver
+            </a>
+
+            {% if is_granted('ROLE_ADMIN') %}
+
+                <i class="icon-edit"></i> <a href="{{ path('proyecto_edit', { 'id': entity.id }) }}">
+                    Editar
+                </a>
+            {% endif%}
+
+        </ul>
+        <div class="span12">
+            <img src="{{asset('bundles/entidades/images/proyectos1.jpg')}}">
+        </div>
+    </div>
+{% endblock %}

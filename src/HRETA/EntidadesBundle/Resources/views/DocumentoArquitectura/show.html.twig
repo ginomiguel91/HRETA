@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    
+    <div class="panel span6 offset1">
+    <div class="panel-header">
+    <h3>Documento de Arquitectura</h3>
+</div>
+        <div class="panel-body">
+      
+       <div class="span8 offset1">
+    <table class="record_actions">
+        <tbody>
+           
+            <tr>
+                <th>Versión</th>
+                <td>{{ entity.version }}</td>
+            </tr>
+            <tr>
+                <th>Aplica al proyecto</th>
+                <td>{{ entity.aplicaAlProyecto }}</td>
+            </tr>
+            <tr>
+                <th>Causa de  no aplicar</th>
+                <td>{{ entity.causaNoAplicar }}</td>
+            </tr>
+        </tbody>
+    </table>
+            </div>
+            </div>
+
+        <ul class="record_actions">
+  
+        <i class="icon-arrow-left"></i> <a href="{{ path('documentoarquitectura',{'idexped':entity.idexped.id}) }}">
+         Volver
+        </a>
+   
+  
+        <i class="icon-edit"></i> <a href="{{ path('documentoarquitectura_edit', { 'id': entity.id,'idexped':entity.idexped.id }) }}">
+            Editar
+        </a>
+   
+  
+</ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+{% form_theme edit_form '::theme.html.twig'%} 
+
+{% block body -%}
+    <div class="panel span6 offset1">
+        <div class="panel-header">
+            <h3>Edición  de Documento</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="span6 offset3">
+                {{ form_start(edit_form) }}
+                {{ form_label(edit_form.version) }}
+                {{ form_widget(edit_form.version, {'attr':{'class':'span12 ' }}) }}
+
+                {{ form_widget(edit_form.aplicaAlProyecto, {'attr':{'class': 'aplica' }}) }}
+                {{ form_label(edit_form.aplicaAlProyecto) }}
+
+
+               
+                {{ form_widget(edit_form.causaNoAplicar, {'attr':{'class': 'span12 causa isRequired' }}) }}
+                <br>
+                <br>
+                <div class="pull-right">
+                    <button type="submit" class="btn"  />Aceptar</button>
+                  {{ form_end(edit_form) }}
+                    <a class="btn"href="{{ path('documentoarquitectura', { 'idexped': entity.idexped.id },{'reject':true}) }}">
+                        Cancelar
+                    </a>
+                  
+                   
+                </div>
+                <br>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

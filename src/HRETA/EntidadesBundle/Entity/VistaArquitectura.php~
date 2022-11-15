@@ -1,0 +1,255 @@
+<?php
+
+namespace HRETA\EntidadesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * VistaArquitectura
+ *
+ * @ORM\Table(name="tbl_vista_arquitectura")
+ * @ORM\Entity
+ */
+class VistaArquitectura
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="tbl_vista_arquitectura_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="version", type="string", length=10, nullable=false)
+     */
+    private $version;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="aplica_al_proyecto", type="boolean", nullable=false)
+     */
+    private $aplicaAlProyecto;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="satisfecho", type="boolean", nullable=true)
+     */
+    private $satisfecho;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="causa_no_aplicar", type="text", nullable=true)
+     */
+    private $causaNoAplicar;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observaciones", type="text", nullable=true)
+     */
+    private $observaciones;
+
+    /**
+     * @var \ExpedienteArquitectura
+     *
+     * @ORM\ManyToOne(targetEntity="ExpedienteArquitectura")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idexped", referencedColumnName="idexped")
+     * })
+     */
+    private $idexped;
+
+    /**
+     * @var \TipoVista
+     *
+     * @ORM\ManyToOne(targetEntity="TipoVista")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tbl_tipo_vistaid", referencedColumnName="id")
+     * })
+     */
+    private $tbl_tipo_vistaid;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set version
+     *
+     * @param string $version
+     * @return VistaArquitectura
+     */
+    public function setVersion($version)
+    {
+        $this->version = $version;
+    
+        return $this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return string 
+     */
+    public function getVersion()
+    {
+        return $this->version;
+    }
+
+    /**
+     * Set aplicaAlProyecto
+     *
+     * @param boolean $aplicaAlProyecto
+     * @return VistaArquitectura
+     */
+    public function setAplicaAlProyecto($aplicaAlProyecto)
+    {
+        $this->aplicaAlProyecto = $aplicaAlProyecto;
+    
+        return $this;
+    }
+
+    /**
+     * Get aplicaAlProyecto
+     *
+     * @return boolean 
+     */
+    public function getAplicaAlProyecto()
+    {
+        return $this->aplicaAlProyecto;
+    }
+
+    /**
+     * Set satisfecho
+     *
+     * @param boolean $satisfecho
+     * @return VistaArquitectura
+     */
+    public function setSatisfecho($satisfecho)
+    {
+        $this->satisfecho = $satisfecho;
+    
+        return $this;
+    }
+
+    /**
+     * Get satisfecho
+     *
+     * @return boolean 
+     */
+    public function getSatisfecho()
+    {
+        return $this->satisfecho;
+    }
+
+    /**
+     * Set causaNoAplicar
+     *
+     * @param string $causaNoAplicar
+     * @return VistaArquitectura
+     */
+    public function setCausaNoAplicar($causaNoAplicar)
+    {
+        $this->causaNoAplicar = $causaNoAplicar;
+    
+        return $this;
+    }
+
+    /**
+     * Get causaNoAplicar
+     *
+     * @return string 
+     */
+    public function getCausaNoAplicar()
+    {
+        return $this->causaNoAplicar;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     * @return VistaArquitectura
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+    
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string 
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * Set idexped
+     *
+     * @param \HRETA\EntidadesBundle\Entity\ExpedienteArquitectura $idexped
+     * @return VistaArquitectura
+     */
+    public function setIdexped(\HRETA\EntidadesBundle\Entity\ExpedienteArquitectura $idexped = null)
+    {
+        $this->idexped = $idexped;
+    
+        return $this;
+    }
+
+    /**
+     * Get idexped
+     *
+     * @return \HRETA\EntidadesBundle\Entity\ExpedienteArquitectura 
+     */
+    public function getIdexped()
+    {
+        return $this->idexped;
+    }
+
+   
+
+   
+    /**
+     * Set tbl_tipo_vistaid
+     *
+     * @param \HRETA\EntidadesBundle\Entity\TipoVista $tblTipoVistaid
+     * @return VistaArquitectura
+     */
+    public function setTblTipoVistaid(\HRETA\EntidadesBundle\Entity\TipoVista $tblTipoVistaid = null)
+    {
+        $this->tbl_tipo_vistaid = $tblTipoVistaid;
+    
+        return $this;
+    }
+
+    /**
+     * Get tbl_tipo_vistaid
+     *
+     * @return \HRETA\EntidadesBundle\Entity\TipoVista 
+     */
+    public function getTblTipoVistaid()
+    {
+        return $this->tbl_tipo_vistaid;
+    }
+}

@@ -1,0 +1,17 @@
+parameters:
+    entidades.factory.class: HRETA\EntidadesBundle\Factory\EntidadesFactory
+
+services:
+    entidades.factory:
+        class: %entidades.factory.class%
+      
+
+services:
+    hreta_user.registration.form.type:
+        class: HRETA\EntidadesBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: hreta_user_registration }
+
+    create.document.evaluation:
+        class: HRETA\EntidadesBundle\Util\CreateDocumentEvaluation
+        arguments: [@doctrine.orm.entity_manager]

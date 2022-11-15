@@ -1,0 +1,78 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="panel span9">
+        <div class="panel-header">
+            <h3>Listado de Documentos Registrados</h3> 
+        </div>
+        <div class="panel-body">
+
+            <div class="span12">
+
+
+
+                <table id="grid_example">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Versión</th>
+                            <th>Aplica al proyecto</th>
+                            <th>Causa no aplicar</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entity in entities %}
+                            <tr>
+                                <td><a href="{{path('evalDocument',{'id':entity.id,'idexped':entity.idexped.id })}}">{{ entity.tblTipoDocid }}</a></td>
+                                <td>{{ entity.version }}</td>
+
+                                {% if (entity.aplicaAlProyecto)%}
+                                    <td>SI</td>
+                                {% else%}
+                                    <td>NO</td>
+                                {% endif%}
+                                <td>{{ entity.causaNoAplicar }}</td>
+                                <td>
+
+
+                                    <ul style="list-style-type: none;">
+                                        <li>
+                                            <i class=" icon-search"></i> <a class="btn-link" href="{{ path('documentoarquitectura_show', { 'id': entity.id,'idexped':entity.idexped.id }) }}">Mostrar</a>
+
+                                        </li>
+                                        <li>
+                                            <i class=" icon-edit"></i>  <a class="btn-link" href="{{ path('documentoarquitectura_edit', { 'id': entity.id, 'idexped':entity.idexped.id }) }}">Editar</a>
+
+                                        </li>
+                                        <!--  <li>
+                                              <i class="icon-remove-circle"></i><a id="{{entity.id}}"href="#eliminar_modal" role="button" class="btn-link btn-remove" data-toggle="modal">Eliminar</a>
+  
+                                          </li> -->
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <ul class="pager">
+                    <!--
+                    <li>
+                        <a href="{{ path('documentoarquitectura_new',{'idexped':idexped}) }}">
+                            Crear Documento
+                        </a>
+                    </li>
+                    -->
+                </ul>
+
+            </div>
+        </div>
+    </div>        
+
+
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

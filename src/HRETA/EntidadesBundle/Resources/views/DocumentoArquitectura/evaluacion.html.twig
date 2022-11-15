@@ -1,0 +1,75 @@
+{% extends '::base.html.twig' %}
+
+
+{%block body %}
+
+    <div class="panel span9 ">
+        <div class="panel-header">
+            <h3 title="{{entity.tblTipoDocid.descripcion}}"> Evaluación  de Documento: {{entity.tblTipoDocid.denominador}} </h3>
+              
+        </div>
+
+
+        <div class="panel-body">
+
+            <div class="span12">
+
+                <form action="{{path('evalDocumentSave',{'id':entity.id,'idexped':entity.idexped.id})}}" method="POST">
+                    <table id="grid_example">
+                        <thead>
+                            <tr>
+                                <th>Satisfecho</th>
+                                <th>Observaciones</th>
+                                <th>Aspecto a Evaluar</th>
+                        </thead>
+                        <tbody>
+
+                            {% for eval in evaluaciones%}
+                                <tr>
+                                    <td class="span1 center" >   
+
+                                        {% if eval.satisfecho%}
+                                            <input id="{{eval.id}}}" type="checkbox" name="choose{{eval.id}}" checked="checked">
+                                            <label for="{{eval.id}}}"></label>
+                                        {% else%}
+                                            <input id="{{eval.id}}}" type="checkbox" name="choose{{eval.id}}">
+                                            <label for="{{eval.id}}}"></label>
+                                        {% endif%}
+                                    </td> 
+                                    <td class="span6">
+
+
+                                        <textarea name="observacion{{eval.id}}" rows="4" style="width: 100%" >{{eval.observaciones}} </textarea>
+                                    </td>
+                                    <td class="span5">
+                                        {{aspectos[loop.index0].nombre}}
+
+
+                                    </td>
+                                </tr>
+                            {% endfor%}
+
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="pull-right">
+                        <button type="submit" class="btn"  />Aceptar</button>
+
+                        <a class="btn"href="{{ path('documentoarquitectura',{'idexped':entity.idexped.id})}}">
+                            Cancelar
+                        </a>
+
+
+                    </div>
+                </form>
+                <br><br>
+            </div>
+
+        </div>
+    </div>
+
+   
+{% endblock%}
+
+
+

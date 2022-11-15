@@ -1,0 +1,55 @@
+
+entidades:
+    resource: "@EntidadesBundle/Resources/config/routing.yml"
+    prefix:   /
+   
+EntidadesBundle_proyecto:
+    resource: "@EntidadesBundle/Resources/config/routing/proyecto.yml"
+    prefix:   /proyecto
+
+EntidadesBundle_rtfarquitectura:
+    resource: "@EntidadesBundle/Resources/config/routing/rtfarquitectura.yml"
+    prefix:   /rtfarquitectura
+    
+EntidadesBundle_noconformidad:
+    resource: "@EntidadesBundle/Resources/config/routing/noconformidad.yml"
+    prefix:   /noconformidad
+    
+EntidadesBundle_usuario:
+    resource: "@EntidadesBundle/Resources/config/routing/usuario.yml"
+    prefix:   /usuario
+    
+EntidadesBundle_expedientearquitectura:
+    resource: "@EntidadesBundle/Resources/config/routing/expedientearquitectura.yml"
+    prefix:   /expedientearquitectura
+
+EntidadesBundle_informenc:
+    resource: "@EntidadesBundle/Resources/config/routing/informenc.yml"
+    prefix:   /informenc
+    
+EntidadesBundle_documentoarquitectura:
+    resource: "@EntidadesBundle/Resources/config/routing/documentoarquitectura.yml"
+    prefix:   /expedientearquitectura/{idexped}/documentoarquitectura
+
+EntidadesBundle_aspectos:
+    resource: "@EntidadesBundle/Resources/config/routing/aspectos.yml"
+    prefix:   /aspectos
+    
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile

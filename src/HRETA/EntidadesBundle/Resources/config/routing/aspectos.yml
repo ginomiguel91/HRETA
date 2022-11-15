@@ -1,0 +1,30 @@
+aspectos:
+    pattern:  /
+    defaults: { _controller: "EntidadesBundle:Aspectos:index" }
+
+aspectos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EntidadesBundle:Aspectos:show" }
+
+aspectos_new:
+    pattern:  /new
+    defaults: { _controller: "EntidadesBundle:Aspectos:new" }
+
+aspectos_create:
+    pattern:  /create
+    defaults: { _controller: "EntidadesBundle:Aspectos:create" }
+    requirements: { _method: post }
+
+aspectos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EntidadesBundle:Aspectos:edit" }
+
+aspectos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EntidadesBundle:Aspectos:update" }
+    requirements: { _method: post|put }
+
+aspectos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EntidadesBundle:Aspectos:delete" }
+    requirements: { _method: post|delete }

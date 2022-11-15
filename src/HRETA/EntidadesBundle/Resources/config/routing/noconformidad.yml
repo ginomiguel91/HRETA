@@ -1,0 +1,30 @@
+noconformidad:
+    pattern:  /
+    defaults: { _controller: "EntidadesBundle:NoConformidad:index" }
+
+noconformidad_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EntidadesBundle:NoConformidad:show" }
+
+noconformidad_new:
+    pattern:  /new
+    defaults: { _controller: "EntidadesBundle:NoConformidad:new" }
+
+noconformidad_create:
+    pattern:  /create
+    defaults: { _controller: "EntidadesBundle:NoConformidad:create" }
+    requirements: { _method: post }
+
+noconformidad_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EntidadesBundle:NoConformidad:edit" }
+
+noconformidad_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EntidadesBundle:NoConformidad:update" }
+    requirements: { _method: post|put }
+
+noconformidad_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EntidadesBundle:NoConformidad:delete" }
+    requirements: { _method: post|delete }

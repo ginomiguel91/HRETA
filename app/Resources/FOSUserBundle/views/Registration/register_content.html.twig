@@ -1,0 +1,103 @@
+
+{% trans_default_domain 'FOSUserBundle' %}
+<title>{% block title %}HRETA | REGISTRAR{% endblock %}</title>
+<link rel="icon" type="image/x-icon" href="{{ asset('bundles/entidades/images/favicon.png') }}" />
+
+<link href="{{asset('bundles/entidades/css/theme.css')}}" rel="stylesheet">
+<link href="{{asset('bundles/entidades/css/login.css')}}" rel="stylesheet">
+
+<div id="wrapper">
+
+
+    <div id="" style="text-align: center">
+        <div id="login_top" style="height: 30%">
+
+            <div id="logo"></div>
+        </div>
+
+        <div id="login_bottom" style="">
+            <div id="grafica_login" >
+                <div class="logo"><img class="img_logo" src="{{asset('bundles/entidades/images/logo-login2.png')}}" style=""></div>  
+
+            </div>
+            <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal fos_user_registration_register" role="form">
+                {{ form_errors(form) }}
+
+                <div class="form-group">
+
+                    <div class="col-md-7">
+                        <div class="form-error-hreta">
+                            {{ form_errors(form.nombre) }}
+                        </div>            
+                        {{ form_widget(form.nombre, { 'attr': {'class': 'form-control','placeholder':'Nombre'} }) }}
+                    </div>        
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-7">
+                        <div class="form-error-hreta">
+                            {{ form_errors(form.apellidos) }}
+                        </div>            
+                        {{ form_widget(form.apellidos, { 'attr': {'class': 'form-control','placeholder':'Apellidos'} }) }}
+                    </div>        
+                </div>    
+
+                <div class="form-group">
+
+                    <div class="col-md-7"> 
+                        <div class="form-error-hreta">
+                            {{ form_errors(form.username) }}
+                        </div>
+                        {{ form_widget(form.username, { 'attr': {'class': 'form-control','placeholder':'Usuario'} }) }}                    
+                    </div>        
+                </div>    
+
+                <div class="form-group">
+
+                    <div class="col-md-7">
+                        <div class="form-error-hreta">
+                            {{ form_errors(form.email) }}
+                        </div>           
+                        {{ form_widget(form.email, { 'attr': {'class': 'form-control','placeholder':'Correo'} }) }}
+                    </div>        
+                </div>    
+
+                <div class="form-group">
+
+                    <div class="col-md-7">  
+                        <div class="form-error-hreta">
+                            {{ form_errors(form.plainPassword.first) }}
+                        </div>
+                        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control','placeholder':'Contraseña'} }) }}                    
+                    </div>        
+                </div>       
+
+                <div class="form-group">
+
+                    <div class="col-md-7">
+                        <div class="form-error-hret">
+                            {{ form_errors(form.plainPassword.second) }}
+                        </div>           
+                        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control','placeholder':'Confirmar contraseña'} }) }}
+                    </div>        
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-7">
+                        <div class="buttons-align-rhoda" align="center">
+
+                            <button type="submit" id="_submit"  class="btn btn-default" name="_submit" >Registrar</button>
+                        </div>
+                    </div>
+                </div>
+                <div> <a href="{{ path('fos_user_security_login') }}">Autenticar</a></div>
+                    {{ form_end(form) }}
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+

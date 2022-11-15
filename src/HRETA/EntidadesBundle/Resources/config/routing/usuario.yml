@@ -1,0 +1,30 @@
+usuario:
+    pattern:  /
+    defaults: { _controller: "EntidadesBundle:Usuario:index" }
+
+usuario_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EntidadesBundle:Usuario:show" }
+
+usuario_new:
+    pattern:  /new
+    defaults: { _controller: "EntidadesBundle:Usuario:new" }
+
+usuario_create:
+    pattern:  /create
+    defaults: { _controller: "EntidadesBundle:Usuario:create" }
+    requirements: { _method: post }
+
+usuario_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EntidadesBundle:Usuario:edit" }
+
+usuario_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EntidadesBundle:Usuario:update" }
+    requirements: { _method: post|put }
+
+usuario_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EntidadesBundle:Usuario:delete" }
+    requirements: { _method: post|delete }

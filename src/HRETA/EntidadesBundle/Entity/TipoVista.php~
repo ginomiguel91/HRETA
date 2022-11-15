@@ -1,0 +1,39 @@
+<?php
+
+namespace HRETA\EntidadesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RtfArquitectura
+ *
+ * @ORM\Table(name="tbl_tipo_vista")
+ * @ORM\Entity
+ */
+class TipoVista {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="tbl_rtf_arquitectura_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="denominacion", type="string", nullable=true)
+     */
+    private $denominacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aspectoseval", type="string", nullable=true)
+     */
+    private $aspectoseval;
+
+}

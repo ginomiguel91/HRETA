@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+<div class="panel span6 offset1">
+    <div class="panel-header">
+    <h3>Informe</h3>
+    </div>
+           <div class="panel-body">
+      
+       <div class="span8 offset1">
+
+    <table class="record_list">
+        <tbody>
+           
+            <tr>
+                <th>Numero</th>
+                <td>{{ entity.numero }}</td>
+            </tr>
+            <tr>
+                <th>Acuerdos</th>
+                <td>{{ entity.acuerdos }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            </div>
+  
+
+
+ <ul class="record_actions">
+    
+         <i class="icon icon-arrow-left"></i> <a  href="{{ path('informenc') }}">
+        Volver
+        </a>
+    
+    
+         <i class="icon icon-edit"></i><a href="{{ path('informenc_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    
+   
+</ul>
+ 
+    
+    </div>
+    
+    
+    
+    
+{% endblock %}

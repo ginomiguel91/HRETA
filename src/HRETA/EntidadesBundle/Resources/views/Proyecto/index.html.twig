@@ -1,0 +1,107 @@
+{% extends '::base.html.twig' %}
+{% block body -%}
+    <div class="panel span9">
+        <div class="panel-header">
+            <h3>Listado de proyectos registrados</h3> 
+        </div>
+        <div class="panel-body">
+
+            <div class="span12">
+                <table id="grid_example">
+                    <thead >
+                        <tr>
+
+                            <th>Nombre</th>
+                            <th>Versión</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entity in entities %}
+                            <tr>
+
+                                {% if entity.idexped%}
+                                    <td>{{ entity.nombre }}</td>
+                                {% else%}
+                                    <td>{{ entity.nombre }}</td>
+                                {% endif %}
+                                <td>{{ entity.version}}</td>
+                                <td>{{ entity.descripcion }}</td>
+                                <td>
+
+
+                                    <ul style="list-style-type: none;">
+                                        <li>
+                                            <i class=" icon-search"></i> <a class="btn-link" href="{{ path('proyecto_show', { 'id': entity.id }) }}">Mostrar</a>
+
+                                        </li>
+                                        {% if is_granted('ROLE_ADMIN')%}
+                                            <li>
+                                                <i class=" icon-edit"></i>  <a class="btn-link" href="{{ path('proyecto_edit', { 'id': entity.id }) }}">Editar</a>
+
+                                            </li>
+                                            <li>
+                                                <i class="icon-remove-circle"></i><a id="{{entity.id}}"href="#eliminar_modal" role="button" class="btn-link btn-remove" data-toggle="modal">Eliminar</a>
+
+                                            </li>
+                                        {% endif%}
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <ul class="pager">
+                    {% if is_granted('ROLE_ADMIN')%}
+                        <li>
+                            <a  href="{{ path('proyecto_new') }}">Crear</a>
+                        </li>
+                    {% endif%}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="eliminar_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmar eliminar</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Est&aacute; seguro que quiere eliminar el elemento seleccionado?                                                
+                </div>
+                <div class="modal-footer">
+
+                    <!-- /.cambiar esto aki por start y end, borrar el comentario despues de arreglado -->
+                    <form method="post" class="text-center" action="">  
+                        <input name="_method" value="DELETE" type="hidden">
+                        {{ form_widget(delete_form.submit, { 'attr': {                                                               
+                                                                'class' : 'btn btn-danger',                                                                                        
+                                                                } }) }}
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        {{form(delete_form)}}
+                    </form>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+
+        $('.btn-remove').click(function() {
+            var ruta = '{{path('proyecto_delete',{'id': '-1'})}}';
+            ruta = ruta.replace('-1', $(this).attr('id'));
+            $('form').attr('action', ruta);
+        });
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+    </script>
+{% endblock %}
